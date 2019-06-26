@@ -28,12 +28,14 @@ func main() {
 		}
 	}
 OutLoop:
-	fmt.Println(">>>OutLoop")
-	for i := 1; i <= 9; i++ {
-		for j := 1; j <= i; j++ {
-			fmt.Printf(" %d x %d = %d ", i, j, i*j)
+	{
+		fmt.Println(">>>OutLoop")
+		for i := 1; i <= 9; i++ {
+			for j := 1; j <= i; j++ {
+				fmt.Printf(" %d x %d = %d ", i, j, i*j)
+			}
+			fmt.Println()
 		}
-		fmt.Println()
 	}
 	//4
 	for k, v := range []int{1, 2, 3, 4} {
@@ -54,6 +56,21 @@ OutLoop:
 	switch {
 	case len(a) > 0 && len(a) < 8:
 		fmt.Println(3)
+	}
+	//7
+	var t interface{}
+	t = &sum //true//"this is string"
+	switch t := t.(type) {
+	default:
+		fmt.Printf("unexpected type %T", t)
+	case bool:
+		fmt.Printf("type: %t\n", t)
+	case string:
+		fmt.Printf("type: %T\n", t)
+	case *int:
+		fmt.Printf("type: %T\n", t) // t 的类型是 int
+	case *bool:
+		fmt.Printf("type: %t\n", *t) // t 的类型是 *bool
 	}
 
 }
