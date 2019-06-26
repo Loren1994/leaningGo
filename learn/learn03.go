@@ -1,4 +1,4 @@
-package main
+package learn
 
 import (
 	list3 "container/list"
@@ -39,7 +39,7 @@ func (c ChipType) String() string {
 	return "N/A"
 }
 
-func main() {
+func Learn03() {
 	fmt.Printf("%s %d\n", CPU, CPU)
 	var alias intAlias
 	alias = 99

@@ -1,4 +1,4 @@
-package main
+package learn
 
 import (
 	"fmt"
@@ -19,7 +19,7 @@ const (
 	f
 )
 
-func main() {
+func Learn01() {
 	fmt.Printf("%d - %d - %d - %d - %d - %d \n\n", a, b, c, d, e, f)
 	//数值交换
 	a, b := 1, 2

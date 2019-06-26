@@ -1,4 +1,4 @@
-package main
+package learn
 
 import "fmt"
 
@@ -17,7 +17,7 @@ func passByValue(inFunc Data) Data {
 	return inFunc
 }
 
-func main() {
+func Learn05() {
 	//1
 	i, s := test(6, 6)
 	fmt.Printf("%v %v\n", i, s)

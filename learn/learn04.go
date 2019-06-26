@@ -1,8 +1,8 @@
-package main
+package learn
 
 import "fmt"
 
-func main() {
+func Learn04() {
 	var sum = 0
 	//1
 	for i := 1; i <= 100; i++ {

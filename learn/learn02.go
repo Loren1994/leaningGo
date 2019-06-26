@@ -1,4 +1,4 @@
-package main
+package learn
 
 import (
 	"flag"
@@ -8,7 +8,7 @@ import (
 // 定义一个 mode 变量，这个变量的类型是 *string
 var mode = flag.String("mode", "default value", "mode usage")
 
-func main() {
+func Learn02() {
 	//指针取值
 	field1 := "test"
 	ptr := &field1
