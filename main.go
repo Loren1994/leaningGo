@@ -5,5 +5,8 @@ import (
 )
 
 func main() {
-	learn.Learn07()
+	//learn.Learn07()
+	//learn.Learn08()
+	//learn.Learn09()
+	learn.Learn10()
 }
