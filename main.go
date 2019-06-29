@@ -10,5 +10,10 @@ func main() {
 	//learn.Learn11()
 	//learn.Learn12()
 	//learn.Learn13()
-	learn.Learn14()
+	//learn.Learn14()
+	//learn.Learn15()
+	//learn.Learn16()
+	//learn.Learn17()
+	//learn.Learn18()
+	learn.Learn19()
 }
