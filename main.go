@@ -18,5 +18,6 @@ func main() {
 	//learn.Learn19()
 	//learn.Learn20()
 	//learn.Learn21()
-	learn.Learn22()
+	//learn.Learn22()
+	learn.Learn23()
 }
