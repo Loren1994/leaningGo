@@ -1,8 +1,16 @@
 package main
 
-import "learning-go/learn"
+import (
+	"learning-go/learn"
+	"learning-go/web"
+)
 
 func main() {
+	//learnTrip()
+	web.SampleWeb()
+}
+
+func learnTrip() {
 	//learn.Learn07()
 	//learn.Learn08()
 	//learn.Learn09()
