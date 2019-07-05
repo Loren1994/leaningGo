@@ -65,9 +65,3 @@ func selectData(db *sql.DB) {
 		fmt.Println(id, name, age, address)
 	}
 }
-
-func checkErr(err error) {
-	if err != nil {
-		panic(err)
-	}
-}

@@ -13,14 +13,21 @@ import (
 )
 
 func SampleWeb() {
-	Init() //数据库初始化
+	//Init() //数据库初始化
 	http.HandleFunc("/index", sayHelloName)
 	http.HandleFunc("/login", login)
 	http.HandleFunc("/upload", upload)
+	http.HandleFunc("/echo", Echo)
+	http.HandleFunc("/ws", getWS)
 	err := http.ListenAndServe(":9090", nil)
 	if err != nil {
 		fmt.Println(err)
 	}
+}
+
+func getWS(w http.ResponseWriter, r *http.Request) {
+	t, _ := template.ParseFiles("html/websocket.html")
+	t.Execute(w, nil)
 }
 
 func upload(w http.ResponseWriter, r *http.Request) {
@@ -93,5 +100,11 @@ func login(w http.ResponseWriter, r *http.Request) {
 		//err1 = t.ExecuteTemplate(w, "T", template.HTML("<script>alert('you have been pwned')</script>"))
 		//fmt.Println(t,err1)
 		template.HTMLEscape(w, []byte(r.Form.Get("username")+": login success!")) //输出到客户端
+	}
+}
+
+func checkErr(err error) {
+	if err != nil {
+		panic(err)
 	}
 }
