@@ -2,9 +2,12 @@ package web
 
 import (
 	"crypto/md5"
+	"encoding/json"
 	"fmt"
+	"github.com/julienschmidt/httprouter"
 	"html/template"
 	"io"
+	"io/ioutil"
 	"net/http"
 	"os"
 	"strconv"
@@ -14,15 +17,45 @@ import (
 
 func SampleWeb() {
 	//Init() //数据库初始化
+
 	http.HandleFunc("/index", sayHelloName)
 	http.HandleFunc("/login", login)
 	http.HandleFunc("/upload", upload)
 	http.HandleFunc("/echo", Echo)
 	http.HandleFunc("/ws", getWS)
-	err := http.ListenAndServe(":9090", nil)
+
+	//RESTful
+	router := httprouter.New()
+	router.GET("/adduser/:uid", adduser)
+	router.POST("/adduser", adduser)
+
+	go func() {
+		time.Sleep(time.Second * 5)
+		fmt.Println("client 已调用")
+		RPCClient()
+	}()
+
+	//RPC
+	RPCServer()
+	err := http.ListenAndServe(":9090", router)
 	if err != nil {
 		fmt.Println(err)
 	}
+}
+
+type User struct {
+	Name string `json:"name"`
+	Uid  string `json:"uid"`
+}
+
+func adduser(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
+	body, _ := ioutil.ReadAll(io.LimitReader(r.Body, 1048576))
+	fmt.Fprintf(w, "参数: %s\n", body)
+	var user = &User{}
+	json.Unmarshal(body, user)
+	fmt.Printf("name: %s - uid: %s\n", user.Name, user.Uid)
+	ruid := ps.ByName("uid")
+	fmt.Fprintf(w, "[GET] you are add user %s", ruid)
 }
 
 func getWS(w http.ResponseWriter, r *http.Request) {
